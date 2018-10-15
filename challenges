@@ -2,6 +2,366 @@
 
 
 
+//
+//   Redux: Register a Store Listener
+//
+
+
+const ADD = 'ADD';
+
+const reducer = (state = 0, action) => {
+  switch(action.type) {
+    case ADD:
+      return state + 1;
+    default:
+      return state;
+  }
+};
+
+const store = Redux.createStore(reducer);
+
+// global count variable:
+let count = 0;
+
+// change code below this line
+const counter = () =>	count += 1;
+store.subscribe(counter);
+
+// change code above this line
+
+store.dispatch({type: ADD});
+console.log(count);
+store.dispatch({type: ADD});
+console.log(count);
+store.dispatch({type: ADD});
+console.log(count);
+
+
+
+
+
+
+
+//
+//  React: Use && for a More Concise Conditional
+//
+
+
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      display: true
+    }
+    this.toggleDisplay = this.toggleDisplay.bind(this);
+  }
+  toggleDisplay() {
+    this.setState({
+      display: !this.state.display
+    });
+  }
+  render() {
+    // change code below this line
+    const display = this.state.display;
+   
+    return (
+       <div>
+         <button onClick={this.toggleDisplay}>Toggle Display</button>
+          {this.state.display && <h1>Displayed!</h1> }
+       </div>
+    );
+  }
+};
+
+
+
+
+
+
+
+
+
+//
+// React: Render with an If/Else Condition
+//
+
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      display: true
+    }
+    this.toggleDisplay = this.toggleDisplay.bind(this);
+  }
+  toggleDisplay() {
+    this.setState({
+      display: !this.state.display
+    });
+  }
+  render() {
+    // change code below this line
+    const display = this.state.display;
+		if(display){
+			return (
+       <div>
+         <button onClick={this.toggleDisplay}>Toggle              Display</button>
+         <h1>Displayed!</h1>
+       </div>
+    );
+		
+		}
+		
+		else{
+		
+    return (
+       <div>
+         <button onClick={this.toggleDisplay}>Toggle Display</button>
+         
+       </div>
+    );
+  }
+  }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+//
+// React: Bind 'this' to a Class Method
+//
+
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      itemCount: 0
+    };
+    // change code below this line
+			this.addItem = this.addItem.bind(this);
+    // change code above this line
+  }
+  addItem() {
+    this.setState({
+      itemCount: this.state.itemCount + 1
+    });
+    
+  }
+  render() {
+    return (
+      <div>
+        { /* change code below this line */ }
+        <button onClick={this.addItem}>Click Me</button>
+        { /* change code above this line */ }
+        <h1>Current Item Count: {this.state.itemCount}</h1>
+      </div>
+    );
+  }
+};
+
+
+
+
+
+
+//
+//React: Set State with this.setState
+//
+
+
+
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: 'Initial State'
+    };
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick() {
+    // change code below this line
+			this.setState({
+			name: 'React Rocks!'
+			});
+    // change code above this line
+  }
+  render() {
+    return (
+      <div>
+        <button onClick={this.handleClick}>Click Me</button>
+        <h1>{this.state.name}</h1>
+      </div>
+    );
+  }
+};
+
+
+
+
+
+
+
+
+
+
+//React: Render State in the User Interface Another Way
+//
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: 'freeCodeCamp'
+    }
+  }
+  render() {
+    // change code below this line
+		const name= this.state.name;
+    // change code above this line
+    return (
+      <div>
+        { /* change code below this line */ }
+				<h1>{name}</h1>
+        { /* change code above this line */ }
+      </div>
+    );
+  }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+//
+class CampSite extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <div>
+        <Camper />
+      </div>
+    );
+  }
+};
+
+
+class Camper extends React.Component {
+
+  render() {
+    return (
+      <div>
+        <p>{this.props.name}</p>
+      </div>
+    );
+  }
+};
+
+
+Camper.propTypes = {name:PropTypes.string.isRequired};
+Camper.defaultProps = { name : "CamperBot"};
+
+
+
+
+//React: Pass an Array as Props
+//
+const List= (props) => {
+  { /* change code below this line */ }
+   return <p>{props.tasks.join(', ')}</p>
+  { /* change code above this line */ }
+};
+
+class ToDo extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <div>
+        <h1>To Do Lists</h1>
+        <h2>Today</h2>
+        { /* change code below this line */ }
+        <List tasks={["green", "blue", "red"]} />
+        <h2>Tomorrow</h2>
+        <List tasks={["green", "blue", "red"]}/>
+        { /* change code above this line */ }
+      </div>
+    );
+  }
+};
+
+
+
+
+
+
+
+
+//React: Render State in the User Interface
+//
+
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: 'freeCodeCamp'
+    }
+  }
+  render() {
+    return (
+      <div>
+        { /* change code below this line */ }
+					<h1>{this.state.name}</h1>
+        { /* change code above this line */ }
+      </div>
+    );
+  }
+};
+
+
 
 
 //
