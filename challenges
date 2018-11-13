@@ -1,6 +1,101 @@
 /////////
 
 
+//
+//  React and Redux: Moving Forward From Here
+//
+
+// import React from 'react'
+// import ReactDOM from 'react-dom'
+// import { Provider, connect } from 'react-redux'
+// import { createStore, combineReducers, applyMiddleware } from 'redux'
+// import thunk from 'redux-thunk'
+
+// import rootReducer from './redux/reducers'
+// import App from './components/App'
+
+// const store = createStore(
+//   rootReducer,
+//   applyMiddleware(thunk)
+// );
+
+// ReactDOM.render(
+//   <Provider store={store}>
+//     <App/>
+//   </Provider>,
+//   document.getElementById('root')
+// );
+
+// change code below this line
+
+
+console.log('Now I know React and Redux!')
+
+
+
+
+
+
+
+
+
+//
+//   React and Redux: Manage State Locally First
+//
+
+
+class DisplayMessages extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      input: '',
+      messages: []
+    }
+    this.handleChange = this.handleChange.bind(this);
+    this.submitMessage = this.submitMessage.bind(this);
+  }
+  // add handleChange() and submitMessage() methods here
+  handleChange(e){
+
+    this.setState({
+      input: e.target.value
+    });
+    
+ 
+  }
+ 
+  
+submitMessage(){
+      this.setState(({messages}) =>({messages:messages.concat(this.state.input)}))
+    
+     this.setState({input:''});
+}; 
+
+
+
+  render() {
+    return (
+      <div>
+        <h2>Type in a new Message:</h2>
+        { /* render an input, button, and ul here */ }
+              <input 
+              onChange={this.handleChange}
+              value={this.state.input}
+              ></input>
+        
+        <button onClick={this.submitMessage}>Add message</button>
+
+        <ul>
+         {this.state.messages.map(message => (<li>{message}</li>))}
+        </ul>
+
+
+        { /* change code above this line */ }
+      </div>
+    );
+  }
+};
+
 
 //
 //   Redux: Register a Store Listener
