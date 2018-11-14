@@ -31,6 +31,72 @@
 
 console.log('Now I know React and Redux!')
 
+//
+//   React and Redux: Extract State Logic to Redux
+
+//
+// define ADD, addMessage(), messageReducer(), and store here:
+const ADD = 'ADD';
+
+
+const addMessage= (msg) => {
+  return {
+    type: ADD,
+    message: msg
+  };
+};
+
+const messageReducer = (state = [] , action) => {
+  switch (action.type) {
+    case ADD:
+      
+return [
+        ...state, action.message
+        ]
+
+      break;
+    default:
+      return state
+  };
+  
+};
+
+const store = Redux.createStore(messageReducer);
+
+//store.dispatch(addMessage('dsfsd'));
+
+
+
+
+
+
+
+
+
+
+//
+//  React and Redux: Getting Started with React Redux 
+//
+
+
+class DisplayMessages extends React.Component {
+  // change code below this line
+  constructor(props) {
+      super(props);
+
+      this.state = {input: "", messages: []};
+	
+  };
+	
+	
+	
+  // change code above this line
+  render() {
+    return <div />
+  }
+};
+
+
 
 
 
